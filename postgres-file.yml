@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-file-Deployment
+  labels:
+    type: postgres-file
+    creator: chaitanya
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: postgres-file
+  template:
+    metadata:
+      name: postgres-file-pod
+      labels:
+        type: postgres-file
+    spec:
+      containers:
+        - name: my-postgres-file
+          image: postgres
+          env:
+            - name: POSTGRES_PASSWORD
+              value: chaitu
+            - name: POSTGRES_USER
+              value: myuser
+            - name: POSTGRES_DB
+              value: mydb
+...
+
